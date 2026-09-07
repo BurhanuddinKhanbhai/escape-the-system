@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A fast, two-puzzle computer science escape room for student teams."
+    />
+    <title>Escape the System</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <main class="game-shell">
+      <header class="status-bar" aria-label="Game status">
+        <div class="system-status">
+          <span class="status-light" aria-hidden="true"></span>
+          <span id="status-text">SYSTEM STANDBY</span>
+        </div>
+        <div class="timer-block" aria-label="Time remaining">
+          <span class="timer-label">TIME REMAINING</span>
+          <span id="timer" class="timer" role="timer" aria-live="off">5:00</span>
+        </div>
+      </header>
+
+      <section id="intro-screen" class="screen active" aria-labelledby="intro-title">
+        <p class="eyebrow">CS CLUB // EMERGENCY TERMINAL</p>
+        <h1 id="intro-title" class="glitch-title">
+          ESCAPE THE SYSTEM
+          <span class="glitch-copy" aria-hidden="true">ESCAPE THE SYSTEM</span>
+        </h1>
+        <p class="story">
+          The CS Club computers have been locked by a rogue program. You have 5
+          minutes to solve its security challenges and escape the system.
+        </p>
+        <button id="start-button" class="primary-button" type="button">
+          <span aria-hidden="true">&gt;_</span> START
+        </button>
+        <p class="keyboard-hint">Press Enter or click START</p>
+      </section>
+
+      <section id="puzzle-one-screen" class="screen" aria-labelledby="puzzle-one-title" hidden>
+        <p class="eyebrow">SECURITY CHALLENGE // 01 OF 02</p>
+        <h1 id="puzzle-one-title">SECURITY LEVEL 1</h1>
+        <p id="binary-intro" class="puzzle-copy">The system only understands binary.</p>
+        <p id="binary-prompt" class="question">Convert this binary number to decimal:</p>
+        <div id="binary-value" class="challenge-value" aria-describedby="binary-prompt">1010</div>
+
+        <aside class="guide-panel" aria-labelledby="guide-title">
+          <div class="guide-heading">
+            <span aria-hidden="true">[?]</span>
+            <h2 id="guide-title">BINARY QUICK GUIDE</h2>
+            <span class="manual-label">DECRYPTION MANUAL</span>
+          </div>
+
+          <p>Binary place values:</p>
+          <div class="binary-table" role="img" aria-label="Binary place values: 8, 4, 2, 1. Binary digits: 1, 0, 1, 0.">
+            <div><span>8</span><span>4</span><span>2</span><span>1</span></div>
+            <div class="binary-digits"><span>1</span><span>0</span><span>1</span><span>0</span></div>
+          </div>
+          <p class="guide-explanation">
+            Each binary digit is either <strong>1</strong> or <strong>0</strong>.<br />
+            If there is a <strong>1</strong>, add that place value.<br />
+            If there is a <strong>0</strong>, ignore it.
+          </p>
+          <div class="worked-example" aria-label="1010 equals 8 plus 0 plus 2 plus 0, which equals unknown">
+            <span>1010</span>
+            <span>= 8 + 0 + 2 + 0</span>
+            <span>= ?</span>
+          </div>
+        </aside>
+
+        <form id="binary-form" class="answer-form" novalidate>
+          <label for="binary-answer">DECIMAL ANSWER</label>
+          <div class="input-row">
+            <input
+              id="binary-answer"
+              name="binary-answer"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              aria-describedby="puzzle-one-message"
+              placeholder="Type answer"
+            />
+            <button class="primary-button" type="submit">SUBMIT</button>
+          </div>
+        </form>
+        <p id="puzzle-one-message" class="feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="puzzle-two-screen" class="screen" aria-labelledby="puzzle-two-title" hidden>
+        <p class="eyebrow">SECURITY CHALLENGE // 02 OF 02</p>
+        <h1 id="puzzle-two-title">SECURITY LEVEL 2</h1>
+        <p id="code-prompt" class="question">What will this Python code print?</p>
+        <pre class="code-panel" aria-labelledby="code-prompt"><code id="code-snippet">x = 3
+y = 4
+print(x * y + 2)</code></pre>
+        <div id="choice-list" class="choice-grid" aria-label="Answer choices"></div>
+        <p id="puzzle-two-message" class="feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="victory-screen" class="screen result-screen" aria-labelledby="victory-title" hidden>
+        <div class="result-icon success-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow">ALL SECURITY LEVELS CLEARED</p>
+        <h1 id="victory-title">SYSTEM UNLOCKED</h1>
+        <p class="result-callout">YOU ESCAPED!</p>
+        <p id="escape-time" class="escape-time">Escape time: 0:00</p>
+        <button class="primary-button reset-button" type="button">RESET FOR NEXT TEAM</button>
+      </section>
+
+      <section id="expired-screen" class="screen result-screen" aria-labelledby="expired-title" hidden>
+        <div class="result-icon danger-icon" aria-hidden="true">×</div>
+        <p class="eyebrow danger-text">SECURITY PROTOCOL FAILED</p>
+        <h1 id="expired-title" class="danger-text">SYSTEM LOCKED</h1>
+        <p class="result-callout danger-text">TIME EXPIRED</p>
+        <button class="primary-button reset-button danger-button" type="button">TRY AGAIN / RESET</button>
+      </section>
+    </main>
+
+    <footer>
+      <span>CS CLUB SECURITY TERMINAL</span>
+      <span>SESSION DATA: NOT STORED</span>
+    </footer>
+  </body>
+</html>
