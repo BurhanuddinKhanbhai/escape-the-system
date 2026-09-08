@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A fast, two-puzzle computer science escape room for student teams."
+      content="A fast, three-puzzle computer science escape room for student teams."
     />
     <title>Escape the System</title>
     <link rel="stylesheet" href="style.css" />
@@ -43,7 +43,7 @@
       </section>
 
       <section id="puzzle-one-screen" class="screen" aria-labelledby="puzzle-one-title" hidden>
-        <p class="eyebrow">SECURITY CHALLENGE // 01 OF 02</p>
+        <p class="eyebrow">SECURITY CHALLENGE // 01 OF 03</p>
         <h1 id="puzzle-one-title">SECURITY LEVEL 1</h1>
         <p id="binary-intro" class="puzzle-copy">The system only understands binary.</p>
         <p id="binary-prompt" class="question">Convert this binary number to decimal:</p>
@@ -92,7 +92,7 @@
       </section>
 
       <section id="puzzle-two-screen" class="screen" aria-labelledby="puzzle-two-title" hidden>
-        <p class="eyebrow">SECURITY CHALLENGE // 02 OF 02</p>
+        <p class="eyebrow">SECURITY CHALLENGE // 02 OF 03</p>
         <h1 id="puzzle-two-title">SECURITY LEVEL 2</h1>
         <p id="code-prompt" class="question">What will this Python code print?</p>
         <pre class="code-panel" aria-labelledby="code-prompt"><code id="code-snippet">x = 3
@@ -100,6 +100,37 @@ y = 4
 print(x * y + 2)</code></pre>
         <div id="choice-list" class="choice-grid" aria-label="Answer choices"></div>
         <p id="puzzle-two-message" class="feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="puzzle-three-screen" class="screen" aria-labelledby="puzzle-three-title" hidden>
+        <p class="eyebrow">SECURITY CHALLENGE // 03 OF 03</p>
+        <h1 id="puzzle-three-title" tabindex="-1">SECURITY LEVEL 3</h1>
+        <h2 class="question">CRACK THE COLOR CODE</h2>
+        <p class="puzzle-copy">The final firewall is protected by a 5-color security sequence.</p>
+        <p class="puzzle-copy">Arrange the five colors in the correct order.</p>
+        <p class="puzzle-copy">After each attempt, the system will tell you how many colors are in the correct position.</p>
+        <p class="puzzle-copy">Use your previous attempts to crack the code.</p>
+
+        <div class="color-console" role="group" aria-label="Build your color code" aria-describedby="color-help">
+          <p id="color-help" class="color-help">Use each color once. Click a filled slot to remove it.</p>
+          <div id="color-slots" class="color-slots" role="group" aria-label="Five code positions"></div>
+          <div id="color-palette" class="color-palette" role="group" aria-label="Available colors"></div>
+          <div class="color-actions">
+            <button id="clear-colors" class="primary-button clear-colors" type="button">CLEAR</button>
+            <button id="submit-colors" class="primary-button" type="button" aria-describedby="color-selection-status" disabled>SUBMIT CODE</button>
+          </div>
+          <p id="color-selection-status" class="color-help" role="status" aria-live="polite">0 / 5 COLORS SELECTED — fill all slots to submit.</p>
+          <p id="puzzle-three-message" class="feedback color-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+
+        <aside class="guide-panel color-history-panel" aria-labelledby="color-history-title">
+          <div class="guide-heading">
+            <h2 id="color-history-title">GUESS HISTORY</h2>
+            <span class="manual-label">NEWEST FIRST</span>
+          </div>
+          <p id="color-history-empty">No attempts yet. Submit a complete code to begin.</p>
+          <ol id="color-history" class="color-history" aria-label="Previous attempts, newest first" tabindex="0"></ol>
+        </aside>
       </section>
 
       <section id="victory-screen" class="screen result-screen" aria-labelledby="victory-title" hidden>

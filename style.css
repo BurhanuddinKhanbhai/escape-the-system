@@ -611,6 +611,210 @@ footer {
   }
 }
 
+/* Level 3 extends the existing terminal styling without changing earlier screens. */
+.game-shell.color-level-active {
+  overflow: visible;
+}
+
+.color-level-active .status-bar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  border-radius: 8px 8px 0 0;
+}
+
+#puzzle-three-screen {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+#puzzle-three-title {
+  scroll-margin-top: 108px;
+}
+
+.color-console {
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid var(--green-dark);
+  border-radius: 4px;
+  background: #010604;
+  transition: box-shadow 200ms ease;
+}
+
+.color-help {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.color-slots,
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.color-slot {
+  min-height: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 0;
+  border: 1px dashed var(--green-dim);
+  border-radius: 4px;
+  color: var(--muted);
+  background: var(--panel-soft);
+  cursor: pointer;
+}
+
+.color-slot.filled {
+  border-style: solid;
+}
+
+.slot-number {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+[data-color="red"] { --code-color: #ff7a88; }
+[data-color="blue"] { --code-color: #7bbaff; }
+[data-color="green"] { --code-color: #65e69b; }
+[data-color="yellow"] { --code-color: #ffe077; }
+[data-color="purple"] { --code-color: #cd9aff; }
+
+.color-chip {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--code-color);
+  border-radius: 50%;
+  color: #06110c;
+  background: var(--code-color);
+  box-shadow: 0 0 8px var(--code-color);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.color-palette {
+  margin-top: 18px;
+}
+
+.color-button {
+  min-height: 56px;
+  padding: 10px 3px;
+  border: 1px solid var(--code-color);
+  border-radius: 4px;
+  color: #06110c;
+  background: var(--code-color);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.color-slot:hover:not(:disabled),
+.color-button:hover:not(:disabled) {
+  outline: 1px solid var(--text);
+  outline-offset: 2px;
+}
+
+.color-slot:focus-visible,
+.color-button:focus-visible,
+.color-history:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.color-console button:disabled {
+  opacity: 0.45;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.color-actions {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0 14px;
+}
+
+.color-actions .primary-button {
+  flex: 1;
+  padding: 15px 10px;
+}
+
+.clear-colors {
+  color: var(--green-bright);
+  background: var(--panel-soft);
+  box-shadow: none;
+}
+
+.clear-colors:hover {
+  color: #001e0b;
+}
+
+.color-feedback {
+  color: var(--cyan);
+  white-space: pre-line;
+  line-height: 1.6;
+}
+
+.firewall-breached .color-console {
+  border-color: var(--green);
+  box-shadow: var(--shadow), inset 0 0 28px rgba(101, 255, 154, 0.13);
+}
+
+.color-history-panel {
+  margin-bottom: 0;
+}
+
+.color-history {
+  max-height: 256px;
+  margin: 0;
+  padding: 0 8px 0 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.color-attempt {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--green-dark);
+}
+
+.color-attempt h3 {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.history-colors {
+  display: flex;
+  gap: 12px;
+}
+
+.color-attempt .attempt-score {
+  margin: 12px 0 0;
+  color: var(--cyan);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+@media (max-width: 620px) {
+  .color-console { padding: 12px; }
+  .color-slots { gap: 6px; }
+  .color-slot { min-height: 78px; }
+  .color-chip { width: 30px; height: 30px; font-size: 1rem; }
+  .color-palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .color-actions { flex-direction: column; }
+  .history-colors { gap: 10px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
